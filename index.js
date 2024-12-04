@@ -23,7 +23,7 @@ app.use(express());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// mongo connection
+// mongo connection val
 async function main() {
   await mongoose.connect("mongodb://127.0.0.1:27017/test");
 }
