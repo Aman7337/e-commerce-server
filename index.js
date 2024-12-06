@@ -6,11 +6,14 @@ const productRoutes = require("./src/routes/product.routes");
 const styleRoutes = require("./src/routes/style.routes");
 const reviewRoutes = require("./src/routes/review.routes");
 const registorRoutes = require("./src/routes/registor.routes");
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // middlewares
 app.use(
@@ -25,7 +28,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // mongo connection
 async function main() {
-  await mongoose.connect("mongodb://127.0.0.1:27017/test");
+  await mongoose.connect(process.env.MONGODB_URL);
 }
 main()
   .then(() => console.log("mongo connected"))
